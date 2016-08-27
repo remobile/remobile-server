@@ -11,9 +11,6 @@ function noop() {
 
 @antd_form_create
 export default class Init extends React.Component {
-    // static propTypes = {
-    //     onSubmit: PropTypes.func.isRequired,
-    // };
     state = {
         endOpen: false,
         startTime: null,
@@ -54,10 +51,7 @@ export default class Init extends React.Component {
         return endTime.getTime() <= this.state.startTime.getTime();
     }
     onDateChange(field, value) {
-        console.log(field, 'change', value);
-        this.setState({
-            [field]: value,
-        });
+        this.setState({ [field]: value });
     }
     handleReset(e) {
         e.preventDefault();
@@ -65,27 +59,21 @@ export default class Init extends React.Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        // const { validateFields } = this.props.form;
-        // const { onSubmit } = this.props;
-        // validateFields((errors, value) => {
-        //     if (!!errors) {
-        //         _.mapValues(errors, (item)=>{
-        //             notification.error({description: _.last(item.errors.map((o)=>o.message))});
-        //         })
-        //         return;
-        //     }
-        //     onSubmit({
-        //         username: value.username,
-        //         password: value.password,
-        //         name: value.name,
-        //         email: value.email,
-        //         authority: value.authority,
-        //     });
-        // });
-
-         var x = this.props.form.getFieldsValue();
-         console.log(x);
-
+        const { actions, form} = this.props;
+        const { validateFields } = form;
+        validateFields((errors, value) => {
+            if (!!errors) {
+                _.mapValues(errors, (item)=>{
+                    notification.error({description: _.last(item.errors.map((o)=>o.message))});
+                })
+                return;
+            }
+            actions.addTask({
+                tasks: {
+                    _id: 1
+                }
+            }, value);
+        });
     }
     render () {
         const self = this;

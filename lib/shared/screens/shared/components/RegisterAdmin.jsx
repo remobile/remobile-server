@@ -20,8 +20,8 @@ export default class Init extends React.Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        const { validateFields } = this.props.form;
-        const { onSubmit } = this.props;
+        const { onSubmit, form } = this.props;
+        const { validateFields } = form;
         validateFields((errors, value) => {
             if (!!errors) {
                 _.mapValues(errors, (item)=>{
