@@ -10,7 +10,7 @@ export default class Users extends React.Component {
             phone: 1,
             name: 1,
             email: 1,
-            status: 1,
+            state: 1,
             date: 1,
         }
     };
@@ -27,7 +27,7 @@ export default class Users extends React.Component {
         render: (text) => text||'/',
     }, {
         title: '状态',
-        dataIndex: 'status',
+        dataIndex: 'state',
     }, {
         title: '注册时间',
         dataIndex: 'date',

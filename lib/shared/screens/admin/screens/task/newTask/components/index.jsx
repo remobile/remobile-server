@@ -137,11 +137,12 @@ export default class Init extends React.Component {
                     label="任务要求:"
                     hasFeedback
                     >
-                    <Input {...descriptionProps} placeholder="请输入任务要求" />
+                    <Input {...descriptionProps} placeholder="请输入任务要求" type="textarea" rows={4}/>
                 </FormItem>
                 <FormItem
                     {...formItemLayout}
                     label="有效时间:"
+                    required={true}
                     >
                     <Col span="8">
                         <FormItem>
@@ -175,6 +176,7 @@ export default class Init extends React.Component {
                 <FormItem
                     {...formItemLayout}
                     label="任务赏金:"
+                    required={true}
                     hasFeedback
                     >
                     <InputNumber {...rewardProps} min={0.01} max={10000} step={0.01}/>
