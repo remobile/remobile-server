@@ -81,6 +81,9 @@ export default class TaskList extends React.Component {
             )
         }
     }
+    onRowClick(record, index) {
+        this.props.history.push({ pathname: '/admin/task/taskDetail', state: { id: record._id} });
+    }
     render () {
         const tasks = _.map(this.props.tasks, (task, i)=>({...task, key: i}));
         const pagination = {
@@ -94,6 +97,7 @@ export default class TaskList extends React.Component {
                 dataSource={tasks}
                 expandedRowRender={::this.expandedRowRender}
                 pagination={pagination}
+                onRowClick={::this.onRowClick}
                 />
         )
     }
