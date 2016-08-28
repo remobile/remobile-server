@@ -6,7 +6,7 @@ const Panel = Collapse.Panel;
 
 const STATETEXT = [null, {text: '待提交', color: '#CDC9C9'}, {text: '待审核', color: '#EE3B3B'}, {text: '已完成', color: '#B3EE3A'}];
 
-export default class AllTasks extends React.Component {
+export default class TaskList extends React.Component {
     static fragments = {
         tasks: {
             _id: 1,
@@ -64,7 +64,7 @@ export default class AllTasks extends React.Component {
                         <p>{description}</p>
                     </Panel>
                     <Panel header={'领取详情:'} key="3">
-                        <Table columns={AllTasks.childColumns} dataSource={list} pagination={false} size="small" />
+                        <Table columns={TaskList.childColumns} dataSource={list} pagination={false} size="small" />
                     </Panel>
                 </Collapse>
             )
@@ -90,7 +90,7 @@ export default class AllTasks extends React.Component {
         };
         return (
             <Table
-                columns={AllTasks.columns}
+                columns={TaskList.columns}
                 dataSource={tasks}
                 expandedRowRender={::this.expandedRowRender}
                 pagination={pagination}
