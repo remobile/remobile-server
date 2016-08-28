@@ -15,7 +15,6 @@ var defaultOptions = {
     }
 };
 
-// HTTP
 upload(defaultOptions).then(function(data) {
     console.log(data);
     console.log('end');
