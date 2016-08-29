@@ -77,8 +77,8 @@ export default class Init extends React.Component {
     }
     render () {
         const self = this;
-        const { isSuper, isSelf, administrator, form } = this.props;
-        const { waiting } = this.props.states||{};
+        const { states, form } = this.props;
+        const { waiting } = states||{};
         const { getFieldProps, getFieldError, isFieldValidating } = form;
         const { endOpen, startTime, endTime } = this.state;
         const nameProps = getFieldProps('name', {
