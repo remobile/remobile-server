@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import { Table, Modal } from 'antd';
-import ListMenu from 'components/ListMenu';
+import ListMenu, {DELETE_KEY, ADD_KEY, EDIT_KEY} from 'components/ListMenu';
 import _ from 'lodash';
 import moment from 'moment';
 import styles from './index.less';
@@ -29,29 +29,49 @@ export default class VersionList extends React.Component {
         dataIndex: 'date',
         render: (text) => moment(new Date(text)).format('YYYY-MM-DD HH:mm:ss'),
     }];
+    state = {
+        showSelected: false,
+        selectedRowKeys: [],
+    };
     handleClick(key) {
         const {actions, states} = this.props;
-        if (key == 1) {
-        } else if (key == 2) {
-        } else {
-            if (states.selectedAdministrator) {
-                actions.openModal({isEdit: true});
-            } else {
-                Modal.warning({
-                    title: '请选择你要编辑的用户',
-                });
-            }
+        if (key == DELETE_KEY) {
+            const showSelected = !this.state.showSelected;
+            this.setState({showSelected});
         }
     }
     render () {
-        const versions = _.map(this.props.versions, (user, i)=>({...user, key: i}));
+        const self = this;
+        const props = this.props;
+        const {showSelected, selectedRowKeys} = this.state;
+        const versions = _.map(props.versions, (user, i)=>({...user, key: i}));
         const pagination = {
             total: versions.length,
             showSizeChanger: false,
             pageSize: 2,
         };
+        const rowSelection = showSelected ? {
+            type: 'radio',
+            selectedRowKeys,
+            onSelect(record, selectedVersion, selectedRows) {
+                self.setState({selectedRowKeys: [record.key]});
+                Modal.confirm({
+                    title: '您是否确认要删除这个版本',
+                    onOk() {
+                        props.actions.removeVersion(record._id);
+                        self.setState({selectedRowKeys: []});
+                    },
+                    onCancel() {
+                        self.setState({selectedRowKeys: []});
+                    },
+                });
+            },
+        } : null;
         return (
-            <Table columns={VersionList.columns} dataSource={versions} pagination={pagination} />
+            <div>
+                <ListMenu handleClick={::this.handleClick} keys={DELETE_KEY}/>
+                <Table columns={VersionList.columns} dataSource={versions} pagination={pagination} rowSelection={rowSelection}/>
+            </div>
         )
     }
 }

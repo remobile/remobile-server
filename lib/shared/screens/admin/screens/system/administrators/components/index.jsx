@@ -4,6 +4,7 @@ import _ from 'lodash';
 import moment from 'moment';
 import styles from './index.less';
 import ListMenu, {DELETE_KEY, ADD_KEY, EDIT_KEY} from 'components/ListMenu';
+console.log(ListMenu, {DELETE_KEY, ADD_KEY, EDIT_KEY})
 import AddEditMoal from './addEditModal';
 
 export default class Administrators extends React.Component {
@@ -96,7 +97,7 @@ export default class Administrators extends React.Component {
         };
         return (
             <div>
-                <ListMenu handleClick={::this.handleClick} keys={DELETE_KEY|ADD_KEY}/>
+                <ListMenu handleClick={::this.handleClick} />
                 <Table columns={Administrators.columns} dataSource={administrators} pagination={pagination} rowSelection={rowSelection} />
                 <AddEditMoal {...props} fragments={Administrators.fragments}/>
             </div>
