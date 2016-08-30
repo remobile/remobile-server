@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import { Table, Modal } from 'antd';
+import ListMenu from 'components/ListMenu';
 import _ from 'lodash';
 import moment from 'moment';
 import styles from './index.less';
@@ -28,6 +29,20 @@ export default class VersionList extends React.Component {
         dataIndex: 'date',
         render: (text) => moment(new Date(text)).format('YYYY-MM-DD HH:mm:ss'),
     }];
+    handleClick(key) {
+        const {actions, states} = this.props;
+        if (key == 1) {
+        } else if (key == 2) {
+        } else {
+            if (states.selectedAdministrator) {
+                actions.openModal({isEdit: true});
+            } else {
+                Modal.warning({
+                    title: '请选择你要编辑的用户',
+                });
+            }
+        }
+    }
     render () {
         const versions = _.map(this.props.versions, (user, i)=>({...user, key: i}));
         const pagination = {
