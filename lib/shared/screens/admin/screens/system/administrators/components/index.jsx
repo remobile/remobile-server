@@ -3,7 +3,7 @@ import { Table, Modal } from 'antd';
 import _ from 'lodash';
 import moment from 'moment';
 import styles from './index.less';
-import Menu from './menu';
+import ListMenu from 'components/ListMenu';
 import AddEditMoal from './addEditModal';
 
 export default class Administrators extends React.Component {
@@ -62,6 +62,22 @@ export default class Administrators extends React.Component {
             }
         }
     }
+    handleClick(key) {
+        const {actions, states} = this.props;
+        if (key == 1) {
+            actions.openRemove();
+        } else if (key == 2) {
+            actions.openModal({isEdit: false});
+        } else {
+            if (states.selectedAdministrator) {
+                actions.openModal({isEdit: true});
+            } else {
+                Modal.warning({
+                    title: '请选择你要编辑的用户',
+                });
+            }
+        }
+    }
     render () {
         const props = this.props;
         const selectedAdministrator = props.states.selectedAdministrator;
@@ -80,7 +96,7 @@ export default class Administrators extends React.Component {
         };
         return (
             <div>
-                <Menu {...props} />
+                <ListMenu handleClick={::this.handleClick}/>
                 <Table columns={Administrators.columns} dataSource={administrators} pagination={pagination} rowSelection={rowSelection} />
                 <AddEditMoal {...props} fragments={Administrators.fragments}/>
             </div>
