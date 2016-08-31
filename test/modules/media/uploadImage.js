@@ -5,9 +5,9 @@ var defaultOptions = {
     method: 'POST',
     verbose: true,
     param:'file', //文件上传字段名
-    file:'./1.jpg', //文件位置
+    file:'1.jpg', //文件位置
     fields:{ //其余post字段
-        taskId:'57c285a826eda6e70b5d8131',
+        taskId:'57c6e2cf58f3327302b08b1a',
         name:'test',
         description:'this is a test',
         time:'2016-08-09 12:09:57',
