@@ -20,7 +20,7 @@ export default class Init extends React.Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        const { onSubmit, form } = this.props;
+        const { onSubmit, form, administrator } = this.props;
         const { validateFields } = form;
         validateFields((errors, value) => {
             if (!!errors) {
@@ -30,6 +30,7 @@ export default class Init extends React.Component {
                 return;
             }
             onSubmit({
+                ...administrator,
                 username: value.username,
                 password: value.password,
                 name: value.name,
@@ -73,10 +74,10 @@ export default class Init extends React.Component {
             callback();
         }
     }
-    render () {
+    render() {
         const { isSuper, isSelf, administrator, form } = this.props;
-        const {isEdit, selectedAdministrator, waiting, isSelfEditing} = this.props.states||{};
-        const {username, name, email, authority, date} = isEdit ? selectedAdministrator : (isSelf&&!!administrator) ? administrator : {authority:isSuper?0:9};
+        const {isEdit, waiting, isSelfEditing} = this.props.states||{};
+        const {username, name, email, authority, date} = isEdit ? administrator : (isSelf&&!!administrator) ? administrator : {authority:isSuper?0:9};
         const { getFieldProps, getFieldError, isFieldValidating } = form;
         const usernameProps = getFieldProps('username', {
             initialValue: username,
@@ -183,7 +184,7 @@ export default class Init extends React.Component {
                     label="权限:"
                     hasFeedback
                     >
-                    <InputNumber {...authorityProps} min={0} max={9} style={{float:'left'}} disabled={!!isSuper || (isEdit&&selectedAdministrator.key===0) || (!!isSelf)}/>
+                    <InputNumber {...authorityProps} min={0} max={9} style={{float:'left'}} disabled={!!isSuper || (isEdit&&administrator.key===0) || (!!isSelf)}/>
                 </FormItem>
                 {
                     isSelf &&

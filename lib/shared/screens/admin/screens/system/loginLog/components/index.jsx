@@ -7,8 +7,8 @@ const rowSelection = {
     onChange(selectedRowKeys, selectedRows) {
         console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
     },
-    onSelect(record, selectedAdministrator, selectedRows) {
-        console.log(record, selectedAdministrator, selectedRows);
+    onSelect(record, selected, selectedRows) {
+        console.log(record, selected, selectedRows);
     },
 };
 
