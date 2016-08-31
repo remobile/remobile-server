@@ -82,7 +82,9 @@ export default class TaskList extends React.Component {
         }
     }
     onRowClick(record, index) {
-        this.props.history.push({ pathname: '/admin/task/taskDetail', state: { id: record._id} });
+        if (this.props.tasks.length) {
+            this.props.history.push({ pathname: '/admin/task/taskDetail', state: { id: record._id} });
+        }
     }
     render () {
         const tasks = _.map(this.props.tasks, (task, i)=>({...task, key: i}));
@@ -95,7 +97,7 @@ export default class TaskList extends React.Component {
             <Table
                 columns={TaskList.columns}
                 dataSource={tasks}
-                expandedRowRender={::this.expandedRowRender}
+                expandedRowRender={tasks.length ? ::this.expandedRowRender: null}
                 pagination={pagination}
                 onRowClick={::this.onRowClick}
                 />
