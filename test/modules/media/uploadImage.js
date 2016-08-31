@@ -1,7 +1,7 @@
 var upload = require('../../utils/upload');
 
 var defaultOptions = {
-    url:'http://localhost:3000/api/upload',
+    url:'http://localhost:3000/api/uploadMediaFile',
     method: 'POST',
     verbose: true,
     param:'file', //文件上传字段名
