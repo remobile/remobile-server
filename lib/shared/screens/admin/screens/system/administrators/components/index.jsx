@@ -8,8 +8,8 @@ import AddEditMoal from './addEditModal';
 
 export default class Administrators extends React.Component {
     static fragments = {
-        administrators: {
-            _id: 1,
+        getAdministratorList: {
+            id: 1,
             username: 1,
             name: 1,
             email: 1,
@@ -77,7 +77,7 @@ export default class Administrators extends React.Component {
         const self = this;
         const props = this.props;
         const {selectType, selectedRecord} = this.state;
-        const administrators = _.map(props.administrators, (administrator, i)=>({...administrator, key: i}));
+        const administrators = _.map(props.getAdministratorList, (administrator, i)=>({...administrator, key: i}));
         const pagination = {
             total: administrators.length,
             showSizeChanger: false,
