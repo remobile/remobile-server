@@ -76,7 +76,7 @@ export default class Administrators extends React.Component {
     render () {
         const self = this;
         const props = this.props;
-        const {modalVisile} = this.props.states;
+        const {modalVisile} = props.states;
         const {selectType, selectedRecord} = this.state;
         const administrators = _.map(props.administratorList, (administrator, i)=>({...administrator, key: i}));
         const pagination = {
