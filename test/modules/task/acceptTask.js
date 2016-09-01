@@ -1,8 +1,8 @@
 var post = require('../../utils/post');
 
 var param = {
-    userId: '57c6e2a758f3327302b08b19',
-    taskId: '57c6e22009d35f5d02eac701',
+    userId: '57c794e2debc69eec91061da',
+    taskId: '57c77e302f2d331eb264e4ff',
 };
 
 post('acceptTask', param);
