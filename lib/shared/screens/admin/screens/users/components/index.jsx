@@ -5,7 +5,7 @@ import moment from 'moment';
 
 export default class Users extends React.Component {
     static fragments = {
-        users: {
+        userList: {
             _id: 1,
             phone: 1,
             name: 1,
@@ -34,7 +34,7 @@ export default class Users extends React.Component {
         render: (text) => moment(new Date(text)).format('YYYY-MM-DD HH:mm:ss'),
     }];
     render () {
-        const users = _.map(this.props.users, (user, i)=>({...user, key: i}));
+        const users = _.map(this.props.userList, (user, i)=>({...user, key: i}));
         const pagination = {
             total: users.length,
             showSizeChanger: false,
