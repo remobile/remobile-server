@@ -47,11 +47,7 @@ export default class Init extends React.Component {
             notification.error({description: '至少需要上传一种版本文件'});
             return;
         }
-        this.props.actions.addVersion({
-            versions: {
-                _id: 1
-            }
-        }, version);
+        this.props.actions.addVersion(version, {id: 1});
     }
     onChange(type, info) {
         let fileLists = this.state.fileLists;
