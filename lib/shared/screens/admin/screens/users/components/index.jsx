@@ -6,7 +6,7 @@ import moment from 'moment';
 export default class Users extends React.Component {
     static fragments = {
         users: {
-            id: 1,
+            _id: 1,
             phone: 1,
             name: 1,
             email: 1,

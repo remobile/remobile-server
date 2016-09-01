@@ -9,8 +9,8 @@ const STATETEXT = [null, {text: '待提交', color: '#CDC9C9'}, {text: '待审�
 
 export default class TaskDetail extends React.Component {
     static fragments = {
-        getTaskDetail: {
-            id: 1,
+        task: {
+            _id: 1,
             name: 1,
             address: 1,
             description: 1,
@@ -32,7 +32,7 @@ export default class TaskDetail extends React.Component {
         render: (i) => <span style={{color:STATETEXT[i].color}}>{STATETEXT[i].text}</span>,
     }];
     render () {
-        const task = this.props.getTaskDetail;
+        const task = this.props.task;
         if (task) {
             const {name, address, description, reward, startTime, endTime, acceptList} = task;
             const formItemLayout = {labelCol: { span: 3}, wrapperCol: { span: 20}};

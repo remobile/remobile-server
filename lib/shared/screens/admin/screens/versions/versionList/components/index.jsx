@@ -7,8 +7,8 @@ import styles from './index.less';
 
 export default class VersionList extends React.Component {
     static fragments = {
-        getVersionList: {
-            id: 1,
+        versionList: {
+            _id: 1,
             verName: 1,
             androidJsVersion: 1,
             iosJsVersion: 1,
@@ -44,7 +44,7 @@ export default class VersionList extends React.Component {
         const self = this;
         const props = this.props;
         const {selectType, selectedRecord} = this.state;
-        const versions = _.map(props.getVersionList, (user, i)=>({...user, key: i}));
+        const versions = _.map(props.versionList, (user, i)=>({...user, key: i}));
         const pagination = {
             total: versions.length,
             showSizeChanger: false,
