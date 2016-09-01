@@ -9,8 +9,8 @@ const STATETEXT = [null, {text: '待提交', color: '#CDC9C9'}, {text: '待审�
 
 export default class TaskDetail extends React.Component {
     static fragments = {
-        task: {
-            _id: 1,
+        getTaskDetail: {
+            id: 1,
             name: 1,
             address: 1,
             description: 1,
@@ -32,8 +32,9 @@ export default class TaskDetail extends React.Component {
         render: (i) => <span style={{color:STATETEXT[i].color}}>{STATETEXT[i].text}</span>,
     }];
     render () {
-        if (this.props.task) {
-            const {name, address, description, reward, startTime, endTime, acceptList} = this.props.task||{};
+        const task = this.props.getTaskDetail;
+        if (task) {
+            const {name, address, description, reward, startTime, endTime, acceptList} = task;
             const formItemLayout = {labelCol: { span: 3}, wrapperCol: { span: 20}};
             const pagination = { total: acceptList.length, showSizeChanger: false, pageSize: 2, };
             return (

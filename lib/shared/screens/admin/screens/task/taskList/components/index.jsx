@@ -8,8 +8,8 @@ const STATETEXT = [null, {text: '待提交', color: '#CDC9C9'}, {text: '待审�
 
 export default class TaskList extends React.Component {
     static fragments = {
-        tasks: {
-            _id: 1,
+        getTaskList: {
+            id: 1,
             name: 1,
             address: 1,
             description: 1,
@@ -82,12 +82,12 @@ export default class TaskList extends React.Component {
         }
     }
     onRowClick(record, index) {
-        if (this.props.tasks.length) {
-            this.props.history.push({ pathname: '/admin/task/taskDetail', state: { id: record._id} });
+        if (this.props.getTaskList.length) {
+            this.props.history.push({ pathname: '/admin/task/taskDetail', state: { id: record.id} });
         }
     }
     render () {
-        const tasks = _.map(this.props.tasks, (task, i)=>({...task, key: i}));
+        const tasks = _.map(this.props.getTaskList, (task, i)=>({...task, key: i}));
         const pagination = {
             total: tasks.length,
             showSizeChanger: false,

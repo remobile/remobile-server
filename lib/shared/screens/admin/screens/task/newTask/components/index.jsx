@@ -68,7 +68,7 @@ export default class Init extends React.Component {
                 })
                 return;
             }
-            actions.addTask({id: 1}, value);
+            actions.addTask(value, {id: 1});
         });
     }
     render () {
