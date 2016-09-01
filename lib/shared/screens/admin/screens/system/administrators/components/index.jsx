@@ -76,6 +76,7 @@ export default class Administrators extends React.Component {
     render () {
         const self = this;
         const props = this.props;
+        const {modalVisile} = this.props.states;
         const {selectType, selectedRecord} = this.state;
         const administrators = _.map(props.getAdministratorList, (administrator, i)=>({...administrator, key: i}));
         const pagination = {
@@ -95,7 +96,7 @@ export default class Administrators extends React.Component {
             <div>
                 <ListMenu handleClick={::this.handleClick} />
                 <Table columns={Administrators.columns} dataSource={administrators} pagination={pagination} rowSelection={rowSelection} />
-                <AddEditMoal {...props} administrator={selectedRecord} fragments={Administrators.fragments}/>
+                {modalVisile && <AddEditMoal {...props} administrator={selectedRecord} fragments={Administrators.fragments}/>}
             </div>
         )
     }
