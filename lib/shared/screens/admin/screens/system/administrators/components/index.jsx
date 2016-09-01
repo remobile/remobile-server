@@ -62,7 +62,7 @@ export default class Administrators extends React.Component {
                 Modal.confirm({
                     title: '您是否确认要删除这个账户',
                     onOk() {
-                        actions.removeAdministrator(record._id);
+                        actions.removeAdministrator(record.id);
                         self.setState({selectedRecord: null});
                     },
                     onCancel() {

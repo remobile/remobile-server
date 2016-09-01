@@ -8,7 +8,7 @@ export default class AddEditModal extends React.Component {
         if (states.isEdit) {
             actions.updateAdministratorInfo(administrator.id, administrator);
         } else {
-            actions.addAdministrator(administrator, fragments.getAdministratorList);
+            actions.registerAdministrator(administrator, fragments.getAdministratorList);
         }
 
     }

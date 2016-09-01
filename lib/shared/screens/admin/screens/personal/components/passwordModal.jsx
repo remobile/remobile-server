@@ -19,7 +19,7 @@ export default class PasswordMoal extends React.Component {
                 })
                 return;
             }
-            actions.updateAdministratorPassword(administrator._id, value.password, value.newPassword);
+            actions.updateAdministratorPassword(administrator.id, value.password, value.newPassword);
         });
     }
     checkNewPass(rule, value, callback) {

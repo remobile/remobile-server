@@ -11,7 +11,7 @@ const MenuItemGroup = Menu.ItemGroup;
 export default class Personal extends React.Component {
     static fragments = {
         administrator: {
-            _id: 1,
+            id: 1,
             username: 1,
             name: 1,
             email: 1,
@@ -21,7 +21,7 @@ export default class Personal extends React.Component {
     };
     onSubmit(newadministrator) {
         const {actions, administrator} = this.props;
-        actions.updateSelfInfo(administrator._id, newadministrator);
+        actions.updateSelfInfo(administrator.id, newadministrator);
     }
     handleClick(e) {
         const {startEditPersonalInfo, openUpdatePasswordModal} = this.props.actions;
