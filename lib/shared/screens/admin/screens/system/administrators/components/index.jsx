@@ -9,7 +9,7 @@ import AddEditMoal from './addEditModal';
 export default class Administrators extends React.Component {
     static fragments = {
         getAdministratorList: {
-            id: 1,
+            _id: 1,
             username: 1,
             name: 1,
             email: 1,
@@ -62,7 +62,7 @@ export default class Administrators extends React.Component {
                 Modal.confirm({
                     title: '您是否确认要删除这个账户',
                     onOk() {
-                        actions.removeAdministrator(record.id);
+                        actions.removeAdministrator(record._id);
                         self.setState({selectedRecord: null});
                     },
                     onCancel() {

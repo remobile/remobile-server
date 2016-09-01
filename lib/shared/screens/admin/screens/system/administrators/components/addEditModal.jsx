@@ -6,7 +6,7 @@ export default class AddEditModal extends React.Component {
     onSubmit (administrator) {
         const {fragments, actions, states} = this.props;
         if (states.isEdit) {
-            actions.updateAdministratorInfo(administrator.id, administrator);
+            actions.updateAdministratorInfo(administrator._id, administrator);
         } else {
             actions.registerAdministrator(administrator, fragments.getAdministratorList);
         }

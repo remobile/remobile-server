@@ -10,7 +10,7 @@ const MenuDivider = Menu.Divider;
 export default class Header extends React.Component {
     static fragments = {
         administrator: {
-            id: 1,
+            _id: 1,
             email: 1,
             name: 1
         }
