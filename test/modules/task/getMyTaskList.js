@@ -1,7 +1,8 @@
 var post = require('../../utils/post');
+var {userId} = require('../../utils/config');
 
 var param = {
-    userId: '57c6e2a758f3327302b08b19',
+    userId,
     type: 0,
     pageNo: 0,
 };
