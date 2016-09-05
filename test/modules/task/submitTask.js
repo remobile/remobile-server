@@ -6,4 +6,4 @@ var param = {
     taskId,
 };
 
-post('acceptTask', param);
+post('submitTask', param);
