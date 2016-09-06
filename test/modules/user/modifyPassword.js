@@ -3,8 +3,8 @@ var {userId} = require('../../utils/config');
 
 var param = {
     userId,
-    oldPassword: '12',
-    newPassword: '123',
+    oldPassword: '123',
+    newPassword: '123456',
 };
 
 post('modifyPassword', param);
