@@ -1,4 +1,5 @@
 var upload = require('../../utils/upload');
+var {userId, taskId} = require('../../utils/config');
 
 var defaultOptions = {
     url:'http://localhost:3000/api/uploadMediaFile',
@@ -7,7 +8,8 @@ var defaultOptions = {
     param:'file', //文件上传字段名
     file:'1.jpg', //文件位置
     fields:{ //其余post字段
-        taskId:'57c6e2cf58f3327302b08b1a',
+        taskId,
+        userId,
         name:'test',
         description:'this is a test',
         time:'2016-08-09 12:09:57',

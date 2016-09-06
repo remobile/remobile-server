@@ -73,9 +73,8 @@ function upload(options, requestObj) {
     /**
      * Call error callback only once
      * If an async call throws an error after an error accoures do not fire it.
-     * @param arguments
      */
-    var errorCallback = function (arguments) {
+    var errorCallback = function () {
         if (!callbackCalled) {
             callbackCalled = true;
             error(arguments);
