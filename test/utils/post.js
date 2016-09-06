@@ -10,7 +10,7 @@ module.exports = (api, param)=>{
     var options = {
         host: 'localhost',
         port: 3000,
-        path: '/api/'+api,
+        path: '/app/api/'+api,
         method: 'POST',
         headers: headers
     };
