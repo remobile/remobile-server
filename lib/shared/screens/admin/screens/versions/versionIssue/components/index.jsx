@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import antd_form_create from 'decorators/antd_form_create';
 import _ from 'lodash';
 import moment from 'moment';
-import { Button, Form, Upload, Icon, notification } from 'antd';
+import { Button, Form, Upload, Icon, Spin, notification } from 'antd';
 import styles from './index.less';
 const FormItem = Form.Item;
 const Dragger = Upload.Dragger;
