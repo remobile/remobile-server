@@ -31,7 +31,7 @@ export default class Sidebar extends React.Component {
         return data.map((item, i)=>{
             const newkey = key ? key+'_'+i : i;
             if (item === '-') {
-                return <Menu.Divider key={newkey}/>
+                return <MenuDivider key={newkey}/>
             }
             const {label, icon, link, child} = item;
             if (!child) {
